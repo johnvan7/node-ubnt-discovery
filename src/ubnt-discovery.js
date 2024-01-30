@@ -18,7 +18,7 @@ const UBNT_REPLY_SIGNATURE = '010000';
 const UBNT_MAC = '01';
 const UBNT_MAC_AND_IP = '02';
 const UBNT_FIRMWARE = '03';
-const UBNT_UNKNOWN_2 = '0a';
+const UBNT_UPTIME = '0a';
 const UBNT_RADIONAME = '0b';
 const UBNT_MODEL_SHORT = '0c';
 const UBNT_ESSID = '0d';
@@ -43,7 +43,8 @@ server.on('message', (msg, rinfo) => {
         modelShort: '',
         modelFull: '',
         essid: '',
-        mode: ''
+        mode: '',
+        uptime: ''
     };
 
     const signature = msg.toString('hex', 0, 3);
@@ -109,6 +110,9 @@ server.on('message', (msg, rinfo) => {
                         device.mode = 'monitor';
                         break;
                 }
+                break;
+            case UBNT_UPTIME:
+                device.uptime = msg.readInt32BE(pointer).toString();
                 break;
         }
 
