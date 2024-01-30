@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "build": "webpack --mode=production --node-env=production"
   },
   "keywords": [],
   "author": "johnvan7",
   "license": "GPL-3.0",
   "devDependencies": {
-    "nodemon": "^3.0.3"
+    "nodemon": "^3.0.3",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4"
   },
   "repository": {
     "type": "git",
